@@ -5,3 +5,5 @@
 
 ## raylyanway_difference_calculator
 [![demo](https://asciinema.org/a/113463.png)](https://asciinema.org/a/nkxsHEhVsICpVX9ezAd1UNMqf?autoplay=1)
+
+[step 2: comparing two json files](https://asciinema.org/a/G5Z3Mtcz4yEFcnvHBA5bdMC81?autoplay=1)
