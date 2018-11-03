@@ -1,6 +1,6 @@
 {
   "name": "raylyanway_difference_calculator",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "difference calculator",
   "scripts": {
     "test": "jest",
@@ -44,6 +44,7 @@
     "babel-jest": "^23.6.0",
     "eslint": "^5.8.0",
     "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-babel": "^5.2.1",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jest": "^21.26.2",
     "jest": "^23.6.0",
