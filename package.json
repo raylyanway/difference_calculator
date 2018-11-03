@@ -1,6 +1,6 @@
 {
   "name": "raylyanway_difference_calculator",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "difference calculator",
   "scripts": {
     "test": "jest",
@@ -30,6 +30,7 @@
   "homepage": "https://github.com/raylyanway/project-lvl2-s353#readme",
   "dependencies": {
     "commander": "^2.19.0",
+    "ini": "^1.3.5",
     "js-yaml": "^3.12.0",
     "lodash": "^4.17.11"
   },
