@@ -13,3 +13,5 @@
 [step 5: comparing two nested files](https://asciinema.org/a/EnvIzC3zAbmzgCJQrHtNJvle5?autoplay=1)
 
 [step 6: render with format plain](https://asciinema.org/a/HQD98C3z7ROUjukJbEqsZP2uP?autoplay=1)
+
+[step 7: render with format json](https://asciinema.org/a/Caiuqtz8aNwyAE6OvISCRHSlZ?autoplay=1)
