@@ -8,9 +8,6 @@ const dispatcher = {
 };
 
 export default (data, ext) => {
-  try {
-    return dispatcher[ext](data);
-  } catch (e) {
-    throw new Error(`${ext} is an unknown extension`);
-  }
+  if (!dispatcher[ext]) throw new Error(`${ext} is an unknown extension`);
+  return dispatcher[ext](data);
 };

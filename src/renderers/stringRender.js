@@ -4,11 +4,11 @@ const renderValue = (value, countSpaces) => {
   const indent = ' '.repeat(countSpaces);
   if (_.isObject(value)) {
     const entries = Object.entries(value);
-    const result = entries.map((entry) => {
-      if (_.isObject(entry[1])) {
-        return `${indent}   ${entry[0]}: ${renderValue(entry[1], countSpaces + 3)}`;
+    const result = entries.map(([objectName, objectValue]) => {
+      if (_.isObject(objectValue)) {
+        return `${indent}   ${objectName}: ${renderValue(objectValue, countSpaces + 3)}`;
       }
-      return `${indent}   ${entry[0]}: ${entry[1]}`;
+      return `${indent}   ${objectName}: ${objectValue}`;
     });
     return `{\n${result}\n${indent}}`;
   }
@@ -17,13 +17,13 @@ const renderValue = (value, countSpaces) => {
 
 const dispatcher = {
   objects: (obj, indent, countSpaces, makeRender) => `${indent}   ${obj.name}: ${makeRender(obj.children, countSpaces + 3)}`,
-  add: (obj, indent, countSpaces) => `${indent} + ${obj.name}: ${renderValue(obj.value, countSpaces + 3)}`,
-  sub: (obj, indent, countSpaces) => `${indent} - ${obj.name}: ${renderValue(obj.value, countSpaces + 3)}`,
+  addition: (obj, indent, countSpaces) => `${indent} + ${obj.name}: ${renderValue(obj.value, countSpaces + 3)}`,
+  deletion: (obj, indent, countSpaces) => `${indent} - ${obj.name}: ${renderValue(obj.value, countSpaces + 3)}`,
   update: (obj, indent, countSpaces) => [
     `${indent} - ${obj.name}: ${renderValue(obj.value1, countSpaces + 3)}`,
     `${indent} + ${obj.name}: ${renderValue(obj.value2, countSpaces + 3)}`,
   ],
-  equal: (obj, indent, countSpaces) => `${indent}   ${obj.name}: ${renderValue(obj.value, countSpaces + 3)}`,
+  equality: (obj, indent, countSpaces) => `${indent}   ${obj.name}: ${renderValue(obj.value, countSpaces + 3)}`,
 };
 
 const render = (ast, countSpaces = 0) => {

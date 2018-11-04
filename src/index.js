@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import parse from './parsers';
 import makeAst from './ast';
-import render from './renders';
+import render from './renderers';
 
 export default (file1, file2, format = 'string') => {
   const ext1 = path.extname(file1);
