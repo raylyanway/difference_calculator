@@ -11,3 +11,5 @@
 [step 4: comparing two ini files](https://asciinema.org/a/liw5xKxJL8LYQQXFGq3dDxIJU?autoplay=1)
 
 [step 5: comparing two nested files](https://asciinema.org/a/EnvIzC3zAbmzgCJQrHtNJvle5?autoplay=1)
+
+[step 6: render with format plain](https://asciinema.org/a/HQD98C3z7ROUjukJbEqsZP2uP?autoplay=1)
