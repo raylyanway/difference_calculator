@@ -11,25 +11,19 @@ const renderValue = (value) => {
 };
 
 const dispatcher = {
-  objects: (acc, obj, parentName, makeRender) => {
-    const nested = makeRender(obj.value, `${parentName}${obj.name}.`);
-    return `${acc}${nested}`;
-  },
-  add: (acc, obj, parentName) => `${acc}\nProperty '${parentName}${obj.name}' was added with value: ${renderValue(obj.value)}`,
-  sub: (acc, obj, parentName) => `${acc}\nProperty '${parentName}${obj.name}' was removed`,
-  update: (acc, obj, parentName) => `${acc}\nProperty '${parentName}${obj.name}' was updated. From ${renderValue(obj.value1)} to ${renderValue(obj.value2)}`,
-  equal: acc => `${acc}`,
+  objects: (obj, parentName, makeRender) => makeRender(obj.children, `${parentName}${obj.name}.`),
+  add: (obj, parentName) => `Property '${parentName}${obj.name}' was added with value: ${renderValue(obj.value)}`,
+  sub: (obj, parentName) => `Property '${parentName}${obj.name}' was removed`,
+  update: (obj, parentName) => `Property '${parentName}${obj.name}' was updated. From ${renderValue(obj.value1)} to ${renderValue(obj.value2)}`,
 };
 
 const render = (startAst) => {
   const makeRender = (ast, parentName = '') => {
-    const result = ast.reduce((acc, obj) => {
-      const res = dispatcher[obj.type](acc, obj, parentName, makeRender);
-      return res;
-    }, '');
-    return result;
+    const filtered = ast.filter(node => node.type !== 'equal');
+    return filtered.map(obj => dispatcher[obj.type](obj, parentName, makeRender));
   };
-  return `${makeRender(startAst).trim()}\n`;
+  const result = _.flatten(makeRender(startAst, '')).join('\n');
+  return `${result}\n`;
 };
 
 export default render;

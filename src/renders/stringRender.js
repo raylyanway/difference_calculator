@@ -16,7 +16,7 @@ const renderValue = (value, countSpaces) => {
 };
 
 const dispatcher = {
-  objects: (acc, obj, indent, countSpaces, makeRender) => `${acc}\n${indent}   ${obj.name}: ${makeRender(obj.value, countSpaces + 3)}`,
+  objects: (acc, obj, indent, countSpaces, makeRender) => `${acc}\n${indent}   ${obj.name}: ${makeRender(obj.children, countSpaces + 3)}`,
   add: (acc, obj, indent, countSpaces) => `${acc}\n${indent} + ${obj.name}: ${renderValue(obj.value, countSpaces + 3)}`,
   sub: (acc, obj, indent, countSpaces) => `${acc}\n${indent} - ${obj.name}: ${renderValue(obj.value, countSpaces + 3)}`,
   update: (acc, obj, indent, countSpaces) => `${acc}\n${indent} - ${obj.name}: ${renderValue(obj.value1, countSpaces + 3)}\n${indent} + ${obj.name}: ${renderValue(obj.value2, countSpaces + 3)}`,
