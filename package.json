@@ -1,6 +1,6 @@
 {
   "name": "raylyanway_difference_calculator",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "difference calculator",
   "scripts": {
     "test": "jest",
