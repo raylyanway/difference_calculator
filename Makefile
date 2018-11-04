@@ -13,6 +13,15 @@ yaml:
 ini:
 	npx babel-node -- src/bin/gendiff.js ./__tests__/__fixtures__/before.ini ./__tests__/__fixtures__/after.ini
 
+jsonNested:
+	npx babel-node -- src/bin/gendiff.js ./__tests__/__fixtures__/beforeNested.json ./__tests__/__fixtures__/afterNested.json
+
+yamlNested:
+	npx babel-node -- src/bin/gendiff.js ./__tests__/__fixtures__/beforeNested.yaml ./__tests__/__fixtures__/afterNested.yaml
+
+iniNested:
+	npx babel-node -- src/bin/gendiff.js ./__tests__/__fixtures__/beforeNested.ini ./__tests__/__fixtures__/afterNested.ini
+
 publish:
 	npm publish
 
