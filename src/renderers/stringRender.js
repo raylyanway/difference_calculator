@@ -2,17 +2,17 @@ import _ from 'lodash';
 
 const renderValue = (value, countSpaces) => {
   const indent = ' '.repeat(countSpaces);
-  if (_.isObject(value)) {
-    const entries = Object.entries(value);
-    const result = entries.map(([objectName, objectValue]) => {
-      if (_.isObject(objectValue)) {
-        return `${indent}   ${objectName}: ${renderValue(objectValue, countSpaces + 3)}`;
-      }
-      return `${indent}   ${objectName}: ${objectValue}`;
-    });
-    return `{\n${result}\n${indent}}`;
+  if (!_.isObject(value)) {
+    return value;
   }
-  return value;
+  const entries = Object.entries(value);
+  const result = entries.map(([objectName, objectValue]) => {
+    if (_.isObject(objectValue)) {
+      return `${indent}   ${objectName}: ${renderValue(objectValue, countSpaces + 3)}`;
+    }
+    return `${indent}   ${objectName}: ${objectValue}`;
+  });
+  return `{\n${result}\n${indent}}`;
 };
 
 const dispatcher = {
