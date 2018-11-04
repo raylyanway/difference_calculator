@@ -26,13 +26,10 @@ const dispatcher = {
   equal: (obj, indent, countSpaces) => `${indent}   ${obj.name}: ${renderValue(obj.value, countSpaces + 3)}`,
 };
 
-const render = (startAst) => {
-  const makeRender = (ast, countSpaces = 0) => {
-    const indent = ' '.repeat(countSpaces);
-    const result = ast.map(obj => dispatcher[obj.type](obj, indent, countSpaces, makeRender));
-    return `{\n${_.flatten(result).join('\n')}\n${indent}}`;
-  };
-  return `${makeRender(startAst)}\n`;
+const render = (ast, countSpaces = 0) => {
+  const indent = ' '.repeat(countSpaces);
+  const result = ast.map(obj => dispatcher[obj.type](obj, indent, countSpaces, render));
+  return `{\n${_.flatten(result).join('\n')}\n${indent}}`;
 };
 
 export default render;
