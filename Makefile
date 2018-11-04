@@ -19,6 +19,9 @@ jsonNested:
 jsonNestedFormat:
 	npx babel-node -- src/bin/gendiff.js --format plain ./__tests__/__fixtures__/beforeNested.json ./__tests__/__fixtures__/afterNested.json
 
+jsonNestedFormatJson:
+	npx babel-node -- src/bin/gendiff.js --format json ./__tests__/__fixtures__/beforeNested.json ./__tests__/__fixtures__/afterNested.json
+
 publish:
 	npm publish
 
