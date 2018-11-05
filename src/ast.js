@@ -7,17 +7,17 @@ const makeAst = (obj1, obj2) => {
       return { name: key, type: 'objects', children: makeAst(obj1[key], obj2[key]) };
     }
     if (!_.has(obj1, key)) {
-      return { name: key, type: 'addition', value: obj2[key] };
+      return { name: key, type: 'added', value: obj2[key] };
     }
     if (!_.has(obj2, key)) {
-      return { name: key, type: 'deletion', value: obj1[key] };
+      return { name: key, type: 'deleted', value: obj1[key] };
     }
     if (obj1[key] !== obj2[key]) {
       return {
-        name: key, type: 'update', value1: obj1[key], value2: obj2[key],
+        name: key, type: 'updated', value1: obj1[key], value2: obj2[key],
       };
     }
-    return { name: key, type: 'equality', value: obj1[key] };
+    return { name: key, type: 'equal', value: obj1[key] };
   });
 };
 

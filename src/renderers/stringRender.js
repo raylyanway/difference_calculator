@@ -17,13 +17,13 @@ const renderValue = (value, countSpaces) => {
 
 const dispatcher = {
   objects: (obj, indent, countSpaces, makeRender) => `${indent}   ${obj.name}: ${makeRender(obj.children, countSpaces + 3)}`,
-  addition: (obj, indent, countSpaces) => `${indent} + ${obj.name}: ${renderValue(obj.value, countSpaces + 3)}`,
-  deletion: (obj, indent, countSpaces) => `${indent} - ${obj.name}: ${renderValue(obj.value, countSpaces + 3)}`,
-  update: (obj, indent, countSpaces) => [
+  added: (obj, indent, countSpaces) => `${indent} + ${obj.name}: ${renderValue(obj.value, countSpaces + 3)}`,
+  deleted: (obj, indent, countSpaces) => `${indent} - ${obj.name}: ${renderValue(obj.value, countSpaces + 3)}`,
+  updated: (obj, indent, countSpaces) => [
     `${indent} - ${obj.name}: ${renderValue(obj.value1, countSpaces + 3)}`,
     `${indent} + ${obj.name}: ${renderValue(obj.value2, countSpaces + 3)}`,
   ],
-  equality: (obj, indent, countSpaces) => `${indent}   ${obj.name}: ${renderValue(obj.value, countSpaces + 3)}`,
+  equal: (obj, indent, countSpaces) => `${indent}   ${obj.name}: ${renderValue(obj.value, countSpaces + 3)}`,
 };
 
 const render = (ast, countSpaces = 0) => {

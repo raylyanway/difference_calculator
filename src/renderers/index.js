@@ -1,11 +1,10 @@
-import renderJson from './jsonRender';
 import renderString from './stringRender';
 import renderPlain from './plainRender';
 
 const dispatcher = {
   string: renderString,
   plain: renderPlain,
-  json: renderJson,
+  json: JSON.stringify,
 };
 
 export default (ast, format) => {
