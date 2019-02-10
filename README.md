@@ -1,6 +1,6 @@
 # Difference Calculator
 <a href="https://codeclimate.com/github/raylyanway/project-lvl2-s353/maintainability"><img src="https://api.codeclimate.com/v1/badges/1d6d683da082f45b1392/maintainability" /></a>
-[![Build Status](https://travis-ci.org/raylyanway/project-lvl2-s353.svg?branch=master)](https://travis-ci.org/raylyanway/project-lvl2-s353)
+[![Build Status](https://travis-ci.org/raylyanway/difference_calculator.svg?branch=master)](https://travis-ci.org/raylyanway/difference_calculator)
 
 Console utility to find differences in configuration files.
 
