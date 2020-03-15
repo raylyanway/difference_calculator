@@ -15,15 +15,17 @@ const renderValue = (value, countSpaces) => {
   return `{\n${result}\n${indent}}`;
 };
 
+const makeString = (sign) => (obj, indent, countSpaces) => `${indent} ${sign} ${obj.name}: ${renderValue(obj.value, countSpaces + 3)}`;
+
 const dispatcher = {
   objects: (obj, indent, countSpaces, makeRender) => `${indent}   ${obj.name}: ${makeRender(obj.children, countSpaces + 3)}`,
-  added: (obj, indent, countSpaces) => `${indent} + ${obj.name}: ${renderValue(obj.value, countSpaces + 3)}`,
-  deleted: (obj, indent, countSpaces) => `${indent} - ${obj.name}: ${renderValue(obj.value, countSpaces + 3)}`,
+  added: makeString('+'),
+  deleted: makeString('-'),
   updated: (obj, indent, countSpaces) => [
     `${indent} - ${obj.name}: ${renderValue(obj.value1, countSpaces + 3)}`,
     `${indent} + ${obj.name}: ${renderValue(obj.value2, countSpaces + 3)}`,
   ],
-  equal: (obj, indent, countSpaces) => `${indent}   ${obj.name}: ${renderValue(obj.value, countSpaces + 3)}`,
+  equal: makeString(' '),
 };
 
 const render = (ast, countSpaces = 0) => {

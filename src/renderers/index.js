@@ -1,5 +1,6 @@
 import renderString from './stringRender';
 import renderPlain from './plainRender';
+import check from '../utils';
 
 const dispatcher = {
   string: renderString,
@@ -7,7 +8,4 @@ const dispatcher = {
   json: JSON.stringify,
 };
 
-export default (ast, format) => {
-  if (!dispatcher[format]) throw new Error(`${format} is an unknown format`);
-  return dispatcher[format](ast);
-};
+export default (ast, format) => check(ast, format, dispatcher);

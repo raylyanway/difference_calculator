@@ -1,5 +1,6 @@
 import yaml from 'js-yaml';
 import ini from 'ini';
+import check from './utils';
 
 const dispatcher = {
   '.ini': ini.parse,
@@ -7,7 +8,4 @@ const dispatcher = {
   '.json': JSON.parse,
 };
 
-export default (data, ext) => {
-  if (!dispatcher[ext]) throw new Error(`${ext} is an unknown extension`);
-  return dispatcher[ext](data);
-};
+export default (data, ext) => check(data, ext, dispatcher);
