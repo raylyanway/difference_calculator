@@ -28,7 +28,7 @@ const dispatcher = {
 
 const render = (ast, countSpaces = 0) => {
   const indent = ' '.repeat(countSpaces);
-  const result = ast.map(obj => dispatcher[obj.type](obj, indent, countSpaces, render));
+  const result = ast.map((obj) => dispatcher[obj.type](obj, indent, countSpaces, render));
   return `{\n${_.flatten(result).join('\n')}\n${indent}}`;
 };
 

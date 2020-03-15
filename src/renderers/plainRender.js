@@ -18,8 +18,8 @@ const dispatcher = {
 };
 
 const render = (ast, parentName = '') => {
-  const filtered = ast.filter(node => node.type !== 'equal');
-  const result = filtered.map(obj => dispatcher[obj.type](obj, parentName, render));
+  const filtered = ast.filter((node) => node.type !== 'equal');
+  const result = filtered.map((obj) => dispatcher[obj.type](obj, parentName, render));
   return _.flatten(result).join('\n');
 };
 
