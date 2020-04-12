@@ -30,3 +30,6 @@ lint:
 
 test:
 	npm test
+
+format:
+	npx prettier --write .
