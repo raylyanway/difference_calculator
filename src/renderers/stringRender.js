@@ -1,13 +1,14 @@
-import _ from 'lodash';
+import isObject from 'lodash.isobject';
+import flatten from 'lodash.flatten';
 
 const renderValue = (value, countSpaces) => {
   const indent = ' '.repeat(countSpaces);
-  if (!_.isObject(value)) {
+  if (!isObject(value)) {
     return value;
   }
   const entries = Object.entries(value);
   const result = entries.map(([objectName, objectValue]) => {
-    if (_.isObject(objectValue)) {
+    if (isObject(objectValue)) {
       return `${indent}   ${objectName}: ${renderValue(
         objectValue,
         countSpaces + 3,
@@ -38,7 +39,7 @@ const render = (ast, countSpaces = 0) => {
   const result = ast.map((obj) =>
     dispatcher[obj.type](obj, indent, countSpaces, render),
   );
-  return `{\n${_.flatten(result).join('\n')}\n${indent}}`;
+  return `{\n${flatten(result).join('\n')}\n${indent}}`;
 };
 
 export default render;
