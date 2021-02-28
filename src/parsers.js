@@ -4,7 +4,7 @@ import check from './utils';
 
 const dispatcher = {
   '.ini': ini.parse,
-  '.yaml': yaml.safeLoad,
+  '.yaml': yaml.load,
   '.json': JSON.parse,
 };
 
