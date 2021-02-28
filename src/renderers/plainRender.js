@@ -1,10 +1,12 @@
-import _ from 'lodash';
+import isString from 'lodash.isstring';
+import isObject from 'lodash.isobject';
+import flatten from 'lodash.flatten';
 
 const renderValue = (value) => {
-  if (_.isObject(value)) {
+  if (isObject(value)) {
     return '[complex value]';
   }
-  if (_.isString(value)) {
+  if (isString(value)) {
     return `'${value}'`;
   }
   return value;
@@ -30,7 +32,7 @@ const render = (ast, parentName = '') => {
   const result = filtered.map((obj) =>
     dispatcher[obj.type](obj, parentName, render),
   );
-  return _.flatten(result).join('\n');
+  return flatten(result).join('\n');
 };
 
 export default render;
